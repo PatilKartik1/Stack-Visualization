@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Stack Visualizer</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Stack <span>Visualizer</span></h1>
+      <p>
+        Last In, First Out &nbsp;·&nbsp; Max size:
+        <span id="header-max">5</span>
+      </p>
+    </header>
+
+    <div class="layout">
+      <!-- LEFT: Stack visual -->
+      <div class="stack-col">
+        <p class="stack-col-label">Stack</p>
+
+        <div class="stack-tube" id="stack-container">
+          <div class="empty-state" id="empty-state">
+            <span class="empty-icon">⬜</span>
+            <span>Stack is empty</span>
+          </div>
+        </div>
+        <div class="stack-base"></div>
+
+        <div class="stack-stats">
+          <div class="stat-card">
+            <div class="stat-label">Top of Stack</div>
+            <div class="stat-value dash" id="top-display">—</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Size</div>
+            <div class="stat-value">
+              <span id="size-num">0</span
+              ><span class="denom"> / <span id="badge-max">5</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cap-wrap">
+          <div class="cap-label">
+            <span style="color: var(--muted)">Capacity</span>
+            <span id="cap-pct">0%</span>
+          </div>
+          <div class="cap-bar">
+            <div class="cap-fill" id="cap-fill" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Controls -->
+      <div class="controls-col">
+        <div class="card">
+          <p class="card-title">Implementation Mode</p>
+          <div class="mode-toggle">
+            <button
+              class="mode-btn active"
+              id="btn-array"
+              onclick="setMode('array')"
+            >
+              🗃 Array
+            </button>
+            <button
+              class="mode-btn"
+              id="btn-ll"
+              onclick="setMode('linkedlist')"
+            >
+              🔗 Linked List
+            </button>
+          </div>
+          <div class="mode-hint" id="mode-hint">
+            <strong>Array:</strong> Fixed-size, index-based. Max size limit
+            applies.
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Operations</p>
+          <input
+            type="text"
+            id="input"
+            placeholder="Enter a value to push..."
+            autocomplete="off"
+          />
+          <div class="btn-row">
+            <button class="btn btn-push" onclick="pushElement()">↑ Push</button>
+            <button class="btn btn-pop" onclick="popElement()">↓ Pop</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Inspect</p>
+          <div class="btn-grid">
+            <button class="btn btn-ghost" onclick="peekElement()">Peek</button>
+            <button class="btn btn-ghost" onclick="checkEmpty()">
+              Is Empty?
+            </button>
+            <button class="btn btn-ghost" onclick="checkFull()">
+              Is Full?
+            </button>
+            <button class="btn btn-danger" onclick="resetStack()">Reset</button>
+          </div>
+        </div>
+
+        <div class="card" id="max-size-card">
+          <div class="btn-row" style="align-items: center">
+            <input
+              type="number"
+              id="max-size-input"
+              value="5"
+              min="1"
+              max="20"
+              style="margin-bottom: 0; flex: 1"
+            />
+            <button class="btn btn-set" onclick="updateMaxSize()">Set</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <p class="card-title">Log</p>
+          <div id="message">Ready.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Info -->
+    <div class="info-section">
+      <h2>What is a Stack?</h2>
+      <p>
+        A stack is a linear data structure that follows the
+        <strong>Last In, First Out (LIFO)</strong> principle. The last element
+        added to the stack is the first one to be removed — like a stack of
+        plates where you always take from the top.
+      </p>
+      <div class="info-ops">
+        <div class="info-op">
+          <strong>Push</strong>
+          <span>Add an element to the top of the stack.</span>
+        </div>
+        <div class="info-op">
+          <strong>Pop</strong>
+          <span>Remove and return the top element of the stack.</span>
+        </div>
+        <div class="info-op">
+          <strong>Peek</strong>
+          <span>View the top element without removing it.</span>
+        </div>
+      </div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
