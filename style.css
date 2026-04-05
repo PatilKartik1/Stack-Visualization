@@ -33,7 +33,6 @@ body {
   padding: 36px 20px 60px;
 }
 
-/* Header */
 header {
   text-align: center;
   margin-bottom: 36px;
@@ -56,7 +55,6 @@ header p {
   color: var(--muted);
 }
 
-/* Main layout */
 .layout {
   display: grid;
   grid-template-columns: 240px 1fr;
@@ -66,7 +64,6 @@ header p {
   align-items: start;
 }
 
-/* Left: Stack visual */
 .stack-col {
   display: flex;
   flex-direction: column;
@@ -171,7 +168,6 @@ header p {
   border-radius: 4px;
 }
 
-/* Stats */
 .stack-stats {
   width: 100%;
   display: grid;
@@ -214,7 +210,6 @@ header p {
   font-weight: 400;
 }
 
-/* Cap bar */
 .cap-wrap {
   width: 100%;
   margin-top: 10px;
@@ -247,7 +242,6 @@ header p {
   transition: width 0.3s ease;
 }
 
-/* Right: Controls */
 .controls-col {
   display: flex;
   flex-direction: column;
@@ -384,7 +378,6 @@ input::placeholder {
   font-family: "Fira Code", monospace;
 }
 
-/* Info section */
 .info-section {
   width: 100%;
   max-width: 840px;
@@ -437,7 +430,6 @@ input::placeholder {
   line-height: 1.5;
 }
 
-/* Mode toggle */
 .mode-toggle {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -485,7 +477,6 @@ input::placeholder {
   font-weight: 600;
 }
 
-/* Linked list pointer arrow between boxes */
 .ll-arrow {
   width: 100%;
   display: flex;
@@ -512,7 +503,6 @@ input::placeholder {
   font-size: 0.55rem;
 }
 
-/* Animations */
 @keyframes push-in {
   0% {
     opacity: 0;

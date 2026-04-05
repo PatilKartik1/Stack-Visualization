@@ -1,9 +1,8 @@
-// ── Mode ──────────────────────────────────────────────
-let mode = "array"; // 'array' | 'linkedlist'
+let mode = "array";
 
 function setMode(m) {
   mode = m;
-  // reset on switch
+
   arrayStack = [];
   llHead = null;
   llSize = 0;
@@ -40,12 +39,9 @@ function setMode(m) {
   renderStack(false);
 }
 
-// ── Array implementation ───────────────────────────────
 let arrayStack = [];
 let maxSize = 5;
 
-// ── Linked List implementation ─────────────────────────
-// Node: { value, next }
 let llHead = null;
 let llSize = 0;
 
@@ -66,7 +62,6 @@ function llPeek() {
   return llHead ? llHead.value : null;
 }
 
-// Returns array of values from top to bottom for rendering
 function llToArray() {
   const arr = [];
   let cur = llHead;
@@ -74,10 +69,9 @@ function llToArray() {
     arr.push(cur.value);
     cur = cur.next;
   }
-  return arr; // index 0 = top
+  return arr;
 }
 
-// ── Shared helpers ─────────────────────────────────────
 function log(text) {
   document.getElementById("message").innerText = text;
 }
@@ -99,7 +93,6 @@ document.getElementById("max-size-input").addEventListener("keydown", (e) => {
   if (e.key === "Enter") updateMaxSize();
 });
 
-// ── Operations ─────────────────────────────────────────
 function updateMaxSize() {
   const val = parseInt(document.getElementById("max-size-input").value);
   if (isNaN(val) || val < 1) {
@@ -208,7 +201,6 @@ function resetStack() {
   renderStack(false);
 }
 
-// ── Render ─────────────────────────────────────────────
 function renderStack(justPushed) {
   const container = document.getElementById("stack-container");
   const emptyState = document.getElementById("empty-state");
@@ -220,18 +212,16 @@ function renderStack(justPushed) {
   const size = getSize();
   emptyState.style.display = size === 0 ? "flex" : "none";
 
-  // Build display array: always bottom-to-top for column-reverse container
-  let items; // index 0 = bottom
+  let items;
   if (mode === "array") {
-    items = [...arrayStack]; // index 0 = bottom
+    items = [...arrayStack];
   } else {
-    items = llToArray().reverse(); // llToArray gives top→bottom, reverse for bottom→top
+    items = llToArray().reverse();
   }
 
   for (let i = 0; i < items.length; i++) {
     const isTop = i === items.length - 1;
 
-    // In linked list mode, show pointer arrow between nodes (above each non-top box)
     if (mode === "linkedlist" && i > 0) {
       const arrow = document.createElement("div");
       arrow.className = "ll-arrow";
@@ -258,7 +248,6 @@ function renderStack(justPushed) {
     container.appendChild(div);
   }
 
-  // Stats
   const pct = mode === "array" ? Math.round((size / maxSize) * 100) : null;
   document.getElementById("size-num").textContent = size;
   if (pct !== null) {
